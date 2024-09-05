@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamCanvas</title> <!-- Updated title -->
+    <!-- Using Bootstrap's Cyborg theme -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4" style="font-size: 2rem;">DreamCanvas</h1> <!-- Updated Heading with smaller font size -->
+
+        <!-- Notification Banner for LLM Success -->
+        <div id="notification" class="alert alert-success d-none" role="alert">
+            LLM's creative prompt has been applied!
+        </div>
+
+        <!-- Image Generation Form -->
+        <form id="imageForm">
+            <!-- Positive Prompt Section -->
+            <div class="mb-3">
+                <label for="positivePrompt" class="form-label">Positive Prompt</label>
+                <input type="text" class="form-control" id="positivePrompt" placeholder="Describe what you want">
+                <small class="form-text text-muted">Examples: 4k, highly detailed, hyperrealistic</small>
+                <div class="keyword-suggestions" id="positiveKeywords">
+                    <!-- Positive prompt buttons will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Negative Prompt Section -->
+            <div class="mb-3">
+                <label for="negativePrompt" class="form-label">Negative Prompt</label>
+                <input type="text" class="form-control" id="negativePrompt" placeholder="Describe what to avoid">
+                <small class="form-text text-muted">Examples: blurry, watermark</small>
+                <div class="keyword-suggestions" id="negativeKeywords">
+                    <!-- Negative prompt buttons will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- LLM Section -->
+            <div class="mb-3">
+                <label for="llmResponse" class="form-label">Creative Prompt from LLM</label>
+                <textarea class="form-control" id="llmResponse" rows="3" readonly></textarea>
+                <button type="button" id="askLLMButton" class="btn btn-info mt-3">
+                    <span id="askLLMText">Ask LLM for Creative Idea</span>
+                    <span id="askLLMSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                </button>
+                <button type="button" id="useLLMResponseButton" class="btn btn-success mt-3 d-none">Use LLM's Creative Prompt</button>
+            </div>
+
+            <!-- Quick Prompts (like Halloween, Christmas) -->
+            <div id="quickPromptsContainer" class="mb-3">
+                <!-- Dynamic Quick Prompts will be inserted here -->
+            </div>
+
+            <!-- Image Generation Settings -->
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="steps" class="form-label">Steps</label>
+                    <input type="number" class="form-control" id="steps" value="25" min="1">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="width" class="form-label">Width</label>
+                    <input type="number" class="form-control" id="width" value="512">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="height" class="form-label">Height</label>
+                    <input type="number" class="form-control" id="height" value="512">
+                </div>
+            </div>
+
+            <!-- Generate Image and Reset Buttons -->
+            <button type="submit" id="generateBtn" class="btn btn-primary w-100 mb-3">
+                <span id="buttonText">Generate Image</span>
+                <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                <span id="elapsedTime" class="d-none">(00:00)</span>
+            </button>
+            <button type="button" id="resetBtn" class="btn btn-secondary w-100">Reset</button>
+        </form>
+
+        <!-- Image Display and Navigation -->
+        <div id="imageResult" class="mt-4">
+            <img id="generatedImage" src="" alt="Generated Image" class="img-fluid d-none">
+            <div id="imageNavigation" class="mt-3 d-none">
+                <button type="button" id="prevImage" class="btn btn-outline-light me-2">Previous</button>
+                <button type="button" id="nextImage" class="btn btn-outline-light">Next</button>
+            </div>
+        </div>
+
+        <!-- Display Selected Prompts -->
+        <div id="promptDisplay" class="mt-3 d-none">
+            <h5>Positive Prompts:</h5>
+            <p id="positivePromptDisplay" class="text-success"></p>
+            <h5>Negative Prompts:</h5>
+            <p id="negativePromptDisplay" class="text-danger"></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>

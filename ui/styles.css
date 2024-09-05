@@ -1,0 +1,40 @@
+body {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+h1 {
+    color: #f7c04a;
+    font-weight: bold;
+}
+
+.form-label {
+    color: #f7c04a;
+}
+
+.keyword-suggestions {
+    margin-top: 10px;
+}
+
+#generatedImage {
+    border: 2px solid #f7c04a;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#promptDisplay {
+    background-color: #292929;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #f7c04a;
+}
+
+#positivePromptDisplay {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+#negativePromptDisplay {
+    color: #ff3333;
+    font-weight: bold;
+}

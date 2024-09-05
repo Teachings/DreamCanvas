@@ -1,0 +1,28 @@
+{
+    "Positive Quick Prompts": [
+      { "label": "4k", "value": "4k" },
+      { "label": "Highly Detailed", "value": "highly detailed" },
+      { "label": "Hyperrealistic", "value": "hyperrealistic" }
+    ],
+    "Negative Quick Prompts": [
+      { "label": "Blurry", "value": "blurry" },
+      { "label": "Watermark", "value": "watermark" },
+      { "label": "Low Quality", "value": "low quality" }
+    ],
+    "Halloween Quick Prompts": [
+      { "label": "Black Background", "value": "black background" },
+      { "label": "Silhouette", "value": "Silhouette" },
+      { "label": "Witch", "value": "Witch" },
+      { "label": "Moon", "value": "Moon" },
+      { "label": "Halloween", "value": "Halloween" },
+      { "label": "Seance", "value": "Seance" }
+    ],
+    "Christmas Quick Prompts": [
+      { "label": "Snowy", "value": "Snowy" },
+      { "label": "Christmas Tree", "value": "Christmas Tree" },
+      { "label": "Santa Claus", "value": "Santa Claus" },
+      { "label": "Presents", "value": "Presents" },
+      { "label": "Winter Wonderland", "value": "Winter Wonderland" }
+    ]
+}
+  

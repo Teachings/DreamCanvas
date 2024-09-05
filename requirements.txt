@@ -1,0 +1,9 @@
+websocket-client
+pillow
+python-multipart
+fastapi
+uvicorn
+websocket-client
+termcolor
+requests
+python-dotenv

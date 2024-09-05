@@ -1,0 +1,50 @@
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# IPython notebook checkpoints
+*.ipynb_checkpoints
+
+# Virtual environment related files
+venv/
+.venv/
+env/
+.env/
+
+# IDE configuration files (if you use a specific one like VSCode, PyCharm, etc.)
+.idea/
+*.iml
+*.pydevproject
+
+# Debug and temporary files
+*.log
+.debug/
+*~
+\#*\#
+*_old*
+*_backup*
+
+# Package management files (like Pipfile, poetry)
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Distribution related files
+setup.py
+pyproject.toml
+
+# Third party dependencies (like node_modules, vendor)
+node_modules/
+vendor/
+
+# Files or directories to ignore in all repositories
+**/Thumbs.db
+**/.DS_Store
+# **/.env
+
+outputs/
