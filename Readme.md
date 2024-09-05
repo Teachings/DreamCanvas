@@ -13,6 +13,7 @@ Full Video Walkthrough:
   - [Requirements](#requirements)
   - [Installation](#installation)
   - [Running the Server](#running-the-server)
+  - [Running with Docker](#running-with-docker)
 - [Functionality](#functionality)
   - [Positive and Negative Prompts](#positive-and-negative-prompts)
   - [LLM-Assisted Prompt Generation](#llm-assisted-prompt-generation)
@@ -102,6 +103,45 @@ To test that ComfyUI is working fine, you can run `main.py`:
 ```bash
 python main.py
 ```
+
+---
+
+## Running with Docker
+
+If you prefer to run the application using Docker, you can containerize it with the provided **Dockerfile**.
+
+### 1. **Dockerfile**
+
+`Dockerfile` is included here to build the image:
+
+### 2. **Building and Running the Docker Image**
+
+To run the application in Docker, follow these steps:
+
+1. **Build the Docker Image:**
+
+   Navigate to the project directory and run the following command to build the Docker image:
+
+   ```bash
+   docker build -t dreamcanvas-app .
+   ```
+
+2. **Run the Docker Container:**
+
+   Once the image is built, run the container:
+
+   ```bash
+   docker run -d -p 8000:8000 --env-file .env --name dreamcanvas_app dreamcanvas-app
+   ```
+
+   This command will:
+   - Start the container in detached mode (`-d`).
+   - Map port `8000` from the container to the host machine.
+   - Use the `.env` file for environment variables.
+
+3. **Access the Application:**
+
+   You can now access the application by navigating to `http://localhost:8000/`.
 
 ---
 
