@@ -3,6 +3,9 @@
 
 DreamCanvas is an AI-powered image generator that allows users to create creative, high-quality images using ComfyUI and integrates with a local Large Language Model (LLM) via Ollama. This project includes a FastAPI backend, a dynamic web interface, and support for user-configurable models and servers.
 
+Full Video Walkthrough:
+ (Placeholder)
+
 ---
 
 ## Table of Contents
@@ -34,14 +37,14 @@ DreamCanvas is an AI-powered image generator that allows users to create creativ
    - The project uses Conda for environment management. Make sure Conda is installed on your system.
 
 2. **ComfyUI**:
-   - ComfyUI should be installed and running. You must have the checkpoint `realvisxlV50Lightning.Ng9I.safetensors` installed in the `checkpoints/models` folder for the workflow.
+   - ComfyUI should be installed and running. You must have the checkpoint `realvisxlV50Lightning.Ng9I.safetensors` installed in the `checkpoints` folder for the workflow.
    - Alternatively, you can modify `workflow.json` to use any other model/checkpoint.
 
 3. **Ollama**:
    - Ollama LLM server should be installed and accessible.
 
 4. **Configuration via `.env`**:
-   - The project uses a `.env` file for configuring server addresses:
+   - The project uses a `.env` file for configuring server addresses, below are my custom configuration settings:
      ```bash
      COMFYUI_SERVER_ADDRESS=192.168.1.10:8188
      OLLAMA_SERVER_ADDRESS=192.168.1.10:11436
@@ -53,8 +56,8 @@ DreamCanvas is an AI-powered image generator that allows users to create creativ
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/Teachings/dreamcanvas.git
-   cd dreamcanvas
+   git clone https://github.com/Teachings/DreamCanvas.git
+   cd DreamCanvas
    ```
 
 2. **Set Up Conda Environment**:
@@ -76,7 +79,8 @@ DreamCanvas is an AI-powered image generator that allows users to create creativ
 
 4. **Set Up `.env` File**:
 
-   Ensure the `.env` file exists in the project root and contains the correct server addresses for ComfyUI and Ollama:
+   Ensure the `.env` file exists in the project root and contains the correct server addresses for ComfyUI and Ollama.
+   Below are my custom configuration settings:
 
    ```bash
    COMFYUI_SERVER_ADDRESS=192.168.1.10:8188
