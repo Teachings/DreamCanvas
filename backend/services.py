@@ -15,6 +15,7 @@ server_address = os.getenv('COMFYUI_SERVER_ADDRESS', 'localhost:8188')
 client_id = str(uuid.uuid4())
 ollama_server_address = os.getenv('OLLAMA_SERVER_ADDRESS', 'localhost:11434')
 ollama_server_url = f"http://{ollama_server_address}/v1/chat/completions"
+ollama_model = os.getenv('OLLAMA_MODEL', 'llama3.1:latest')  # Load model from .env
 
 # Service to get quick prompts data
 def get_quick_prompts_data():
@@ -24,7 +25,7 @@ def get_quick_prompts_data():
 # Service to ask LLM for response
 def ask_llm_service(positive_prompt: str):
     ollama_request = {
-        "model": "hermes3:70b",
+        "model": ollama_model,  # Use model from .env
         "messages": [
             {
                 "role": "system",
