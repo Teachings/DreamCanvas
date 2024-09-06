@@ -17,5 +17,5 @@ EXPOSE 8000
 # ENV COMFYUI_SERVER_ADDRESS=192.168.1.10:8188
 # ENV OLLAMA_SERVER_ADDRESS=192.168.1.10:11436
 
-# Step 7: Run FastAPI using Uvicorn
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Step 7: Run FastAPI using Uvicorn with the correct path for the entry point
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

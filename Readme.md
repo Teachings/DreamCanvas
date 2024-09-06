@@ -1,14 +1,10 @@
+# **DreamCanvas - AI-Powered Creativity**
 
-# DreamCanvas - AI-Powered Creativity
-
-DreamCanvas is an AI-powered image generator that allows users to create creative, high-quality images using ComfyUI and integrates with a local Large Language Model (LLM) via Ollama. This project includes a FastAPI backend, a dynamic web interface, and support for user-configurable models and servers.
-
-Full Video Walkthrough:
- (Placeholder)
+DreamCanvas is an AI-powered image generator that allows users to create high-quality, creative images using ComfyUI and integrates with a local Large Language Model (LLM) via Ollama. This project includes a FastAPI backend, a dynamic web interface, and support for user-configurable models and servers.
 
 ---
 
-## Table of Contents
+## **Table of Contents**
 - [Setup](#setup)
   - [Requirements](#requirements)
   - [Installation](#installation)
@@ -30,9 +26,9 @@ Full Video Walkthrough:
 
 ---
 
-## Setup
+## **Setup**
 
-### Requirements
+### **Requirements**
 
 1. **Conda Environment**:
    - The project uses Conda for environment management. Make sure Conda is installed on your system.
@@ -45,14 +41,14 @@ Full Video Walkthrough:
    - Ollama LLM server should be installed and accessible.
 
 4. **Configuration via `.env`**:
-   - The project uses a `.env` file for configuring server addresses, below are my custom configuration settings:
+   - The project uses a `.env` file for configuring server addresses. Below are custom configuration settings:
      ```bash
      COMFYUI_SERVER_ADDRESS=192.168.1.10:8188
      OLLAMA_SERVER_ADDRESS=192.168.1.10:11436
      ```
    - Adjust these values to match your environment.
 
-### Installation
+### **Installation**
 
 1. **Clone the Repository**:
 
@@ -81,107 +77,100 @@ Full Video Walkthrough:
 4. **Set Up `.env` File**:
 
    Ensure the `.env` file exists in the project root and contains the correct server addresses for ComfyUI and Ollama.
-   Below are my custom configuration settings:
 
    ```bash
    COMFYUI_SERVER_ADDRESS=192.168.1.10:8188
    OLLAMA_SERVER_ADDRESS=192.168.1.10:11436
    ```
 
-### Running the Server
+---
 
-Start the FastAPI server with the following command:
+## **Running the Server**
+
+### **Local Environment**
+
+To run the FastAPI server in your local environment, use the following command:
 
 ```bash
-uvicorn server:app --host 0.0.0.0 --port 8000 --reload
+uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-This will run the app on `http://localhost:8000/`.
+This will start the app on `http://localhost:8000/`.
 
-To test that ComfyUI is working fine, you can run `main.py`:
+To ensure that ComfyUI is functioning correctly, you can test the connection using the workflow defined in `workflow.json`.
+
+---
+
+## **Running with Docker**
+
+If you prefer to run the application inside a Docker container, the following steps guide you through building and running the containerized application.
+
+### **1. Build the Docker Image**
+
+Navigate to the project directory and build the Docker image:
 
 ```bash
-python main.py
+docker build -t dreamcanvas .
 ```
 
----
+### **2. Run the Docker Container**
 
-## Running with Docker
+Once the Docker image is built, run the container:
 
-If you prefer to run the application using Docker, you can containerize it with the provided **Dockerfile**.
+```bash
+docker run -d -p 8000:8000 --env-file .env --name dreamcanvas dreamcanvas
+```
 
-### 1. **Dockerfile**
+This command will:
+- Start the container in **detached mode** (`-d`).
+- Map port **8000** of the container to port **8000** on your host.
+- Use the `.env` file to set environment variables.
 
-`Dockerfile` is included here to build the image:
+### **3. Access the Application**
 
-### 2. **Building and Running the Docker Image**
-
-To run the application in Docker, follow these steps:
-
-1. **Build the Docker Image:**
-
-   Navigate to the project directory and run the following command to build the Docker image:
-
-   ```bash
-   docker build -t dreamcanvas-app .
-   ```
-
-2. **Run the Docker Container:**
-
-   Once the image is built, run the container:
-
-   ```bash
-   docker run -d -p 8000:8000 --env-file .env --name dreamcanvas_app dreamcanvas-app
-   ```
-
-   This command will:
-   - Start the container in detached mode (`-d`).
-   - Map port `8000` from the container to the host machine.
-   - Use the `.env` file for environment variables.
-
-3. **Access the Application:**
-
-   You can now access the application by navigating to `http://localhost:8000/`.
+You can now access the application at `http://localhost:8000/`
 
 ---
 
-## Functionality
+## **Functionality**
 
-### Positive and Negative Prompts
+### **Positive and Negative Prompts**
 
-- **Positive Prompt**: Specify the elements that should be emphasized in the image (e.g., "4k, highly detailed, hyperrealistic").
-- **Negative Prompt**: Define elements to avoid in the image (e.g., "blurry, watermark").
+- **Positive Prompt**: Specifies the elements to include in the generated image (e.g., "4k, highly detailed, hyperrealistic").
+- **Negative Prompt**: Specifies elements to avoid in the image (e.g., "blurry, watermark").
 
-### LLM-Assisted Prompt Generation
+### **LLM-Assisted Prompt Generation**
 
-- **Ask LLM for Creative Idea**: Users can click this button to ask a locally hosted LLM (Ollama) for a creative suggestion. The returned prompt can be applied directly to the positive prompt input by clicking "Use LLM's Creative Prompt."
+- **Ask LLM for a Creative Idea**: The user can request a creative prompt suggestion from a locally hosted LLM (Ollama). The generated prompt can be applied to the positive prompt field.
 
-### Quick Prompts
+### **Quick Prompts**
 
-- **Preconfigured Prompts**: Both positive and negative quick prompts are available as buttons. Clicking a button auto-fills the corresponding input field.
-- **Themed Prompts**: Themes like **Halloween** or **Christmas** are dynamically loaded from the `quick_prompts.json` file. You can easily add new themes by editing this file.
+- **Preconfigured Prompts**: Both positive and negative quick prompts are available via buttons. Clicking a button auto-fills the corresponding input field.
+- **Custom Prompts**: Themed prompts (like **Halloween** or **Christmas**) are dynamically loaded from the `quick_prompts.json` file. Adding new themes is as easy as editing this file.
 
-### Image Caching and Navigation
+### **Image Caching and Navigation**
 
-- **Image History**: The app caches generated images locally within the session. Use the **Previous** and **Next** buttons to navigate through previously generated images.
-- **Cache Clearing**: Cached images are cleared when the browser is refreshed or the **Reset** button is clicked.
+- **Image History**: The app caches generated images within the session. Users can navigate through cached images using the **Previous** and **Next** buttons.
+- **Cache Clearing**: Cached images are cleared when the browser is refreshed or when the **Reset** button is clicked.
 
-### UI Reset
+### **UI Reset**
 
-- **Reset Button**: Resets the entire UI, clearing all inputs, generated images, and cached history.
+- The **Reset** button clears all input fields, resets generated images, and clears the image cache.
 
 ---
 
-## Architecture
+## **Architecture**
 
-### Backend
+### **Backend**
 
-The backend is powered by FastAPI and manages image generation, LLM interactions, and serving quick prompts.
+The backend is powered by **FastAPI** and handles the following operations:
+- Generating images using ComfyUI.
+- Fetching creative suggestions from the local LLM.
+- Serving quick prompts from configuration files.
 
-#### Key Endpoints
+#### **Key Endpoints**
 
 1. **POST /generate_images/**
-
    - **Description**: Generates an AI image using the provided prompts and image settings.
    - **Request Example**:
      ```json
@@ -196,7 +185,6 @@ The backend is powered by FastAPI and manages image generation, LLM interactions
    - **Response**: A binary stream containing the generated image.
 
 2. **POST /ask_llm/**
-
    - **Description**: Requests a creative prompt from the local LLM server (Ollama).
    - **Request Example**:
      ```json
@@ -212,7 +200,6 @@ The backend is powered by FastAPI and manages image generation, LLM interactions
      ```
 
 3. **GET /quick_prompts/**
-
    - **Description**: Retrieves quick prompt configurations from the `quick_prompts.json` file for dynamic UI updates.
    - **Response Example**:
      ```json
@@ -232,42 +219,43 @@ The backend is powered by FastAPI and manages image generation, LLM interactions
      }
      ```
 
-### Frontend
+### **Frontend**
 
-The UI is built using HTML, CSS (Bootstrap), and JavaScript. It dynamically interacts with the backend for generating images, fetching LLM responses, and loading quick prompts.
+The frontend is built with HTML, CSS, and JavaScript. It dynamically interacts with the backend for:
+- Generating images.
+- Fetching creative prompts from the LLM.
+- Loading quick prompt configurations from `quick_prompts.json`.
 
-#### UI Components
+#### **UI Components**
 
 1. **Image Generation Form**:
-   - Inputs for positive and negative prompts, image steps, width, and height.
-   - Quick prompt buttons for adding predefined keywords.
+   - Includes fields for positive and negative prompts, image steps, width, and height.
+   - Quick prompt buttons for easy input.
 
 2. **LLM Integration**:
-   - A section that allows users to request and apply creative prompts from the local LLM.
+   - A section that allows users to request and apply creative prompts generated by the LLM.
 
 3. **Image Display and Navigation**:
-   - Displays generated images and includes navigation buttons to browse cached images.
+   - Displays the generated images and includes buttons for navigating through cached images.
 
 4. **Reset Functionality**:
-   - A **Reset** button that clears all fields, images, and the cache of generated images.
+   - A **Reset** button to clear all input fields and generated image history.
 
-### Tools and Libraries
+### **Tools and Libraries**
 
-1. **FastAPI**: Python-based web framework for building the backend.
-2. **Uvicorn**: ASGI server for running FastAPI.
-3. **Ollama**: Locally hosted LLM for generating creative prompt suggestions.
-4. **Pillow**: Python Imaging Library used for image handling and generation.
-5. **Bootstrap**: Frontend framework for styling the UI.
-6. **JavaScript (Fetch API)**: Handles API calls to the backend for image generation and LLM requests.
+1. **FastAPI**: Web framework for building the backend.
+2. **Uvicorn**: ASGI server used to run the FastAPI application.
+3. **Ollama**: Locally hosted LLM for generating creative prompts.
+4. **Pillow**: Python Imaging Library used to handle image operations.
+5. **Bootstrap**: CSS framework for styling the UI.
+6. **JavaScript (Fetch API)**: Handles asynchronous requests to the backend.
 
 ---
 
-## Testing
+## **Testing**
 
-You can test that ComfyUI is working fine using the `main.py` script:
+You can test the ComfyUI workflow by running the FastAPI server as described above. Use the `/generate_images/` endpoint to generate images and validate that the workflow is functioning correctly.
 
-```bash
-python main.py
-```
+To test the LLM integration, use the `/ask_llm/` endpoint to request a creative prompt from the locally hosted Ollama LLM.
 
-This script interacts with the ComfyUI server directly and runs a basic test workflow using the `workflow.json` file. Modify the workflow or models as needed.
+For Docker-based setups, ensure that the `.env` file is correctly set up with the server addresses and run the container as described in the [Running with Docker](#running-with-docker) section.

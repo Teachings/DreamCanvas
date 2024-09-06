@@ -38,3 +38,28 @@ h1 {
     color: #ff3333;
     font-weight: bold;
 }
+
+#prevImage, #nextImage {
+    border-color: #f7c04a; /* Gold border */
+    background-color: transparent; /* Transparent background */
+    color: #f7c04a; /* Gold text color */
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#prevImage:hover, #nextImage:hover {
+    background-color: #f7c04a; /* Gold background on hover */
+    color: #1e1e1e; /* Dark text on hover to contrast */
+}
+
+#llmResponse {
+    margin-top: 0; /* Remove any extra margin at the top */
+    padding-top: 0; /* Remove extra padding at the top */
+    line-height: 1.5; /* Adjust line height for better readability */
+    text-align: left; /* Ensure the text aligns to the left */
+}
+
+#llmResponse:focus {
+    outline: none; /* Remove the blue outline when focused */
+    box-shadow: 0 0 5px 2px #f7c04a; /* Optional: Add a gold glow when focused */
+}
