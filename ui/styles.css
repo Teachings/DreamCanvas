@@ -63,3 +63,20 @@ h1 {
     outline: none; /* Remove the blue outline when focused */
     box-shadow: 0 0 5px 2px #f7c04a; /* Optional: Add a gold glow when focused */
 }
+
+/* Center the title on smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        text-align: center;
+    }
+
+    #imageResult {
+        margin-top: 20px;
+    }
+}
+
+/* New styles for responsive layout and sticky image preview */
+.sticky-top {
+    position: sticky;
+    top: 20px;
+}

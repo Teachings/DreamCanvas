@@ -259,3 +259,11 @@ You can test the ComfyUI workflow by running the FastAPI server as described abo
 To test the LLM integration, use the `/ask_llm/` endpoint to request a creative prompt from the locally hosted Ollama LLM.
 
 For Docker-based setups, ensure that the `.env` file is correctly set up with the server addresses and run the container as described in the [Running with Docker](#running-with-docker) section.
+
+## **Kill Server**
+
+If you need to force kill the server process, you can use the following command:
+
+```bash
+sudo kill -9 $(sudo lsof -t -i :8000)
+```
