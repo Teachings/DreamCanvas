@@ -48,14 +48,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to display the notification for LLM usage
-    function showNotification(message) {
+    function showNotification(message, type = 'success') {
         notification.innerText = message;
-        notification.classList.remove("d-none");
+        notification.classList.remove("d-none", "alert-success", "alert-danger");
+        notification.classList.add(`alert-${type}`);
 
         // Hide the notification after 3 seconds
         setTimeout(() => {
             notification.classList.add("d-none");
         }, 3000);
+    }
+
+    // Automatically scroll to the image result when it is generated
+    function scrollToImage() {
+        generatedImage.scrollIntoView({ behavior: "smooth", block: "center" });
     }
 
     // Function to reset the form
@@ -253,6 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
             imageHistory.push(imageUrl);
             currentImageIndex = imageHistory.length - 1;
             updateImageNavigation();
+            scrollToImage(); // Automatically scroll to the image
 
             // Display the selected prompts
             positivePromptDisplay.innerText = positivePrompt;
@@ -271,6 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
             spinner.classList.add("d-none");
             buttonText.innerText = "Generate Image";
             stopTimer();
+            showNotification("Failed to generate image. Please try again.", "danger");
         });
     });
 
